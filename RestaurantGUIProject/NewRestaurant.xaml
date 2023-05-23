@@ -1,0 +1,119 @@
+﻿<Window x:Class="RestaurantGUIProject.NewRestaurant"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RestaurantGUIProject"
+        mc:Ignorable="d"
+        Title="NewRestaurant" Height="450" Width="800">
+    <Grid>
+        <TextBox x:Name="txtStaticID" HorizontalAlignment="Left" Margin="21,10,0,0" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
+        <TextBox x:Name="txtStaticName" HorizontalAlignment="Left" Margin="21,33,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
+        <TextBox x:Name="txtStaticOpeningTimes" HorizontalAlignment="Left" Margin="21,56,0,0" TextWrapping="Wrap" Text="Opening Hours (open/closed)" VerticalAlignment="Top" Width="178" IsReadOnly="True"/>
+        <TextBox x:Name="txtStaticBreakfastHours" HorizontalAlignment="Left" Margin="21,79,0,0" TextWrapping="Wrap" Text="Breakfast Hours (Start/Stop)" VerticalAlignment="Top" Width="178" IsReadOnly="True" />
+        <TextBox x:Name="txtStaticLunchHours" HorizontalAlignment="Left" Margin="21,102,0,0" TextWrapping="Wrap" Text="Lunch Hours (Start/Stop)" VerticalAlignment="Top" Width="178" IsReadOnly="True" />
+        <TextBox x:Name="txtStaticDinnerHours" HorizontalAlignment="Left" Margin="21,125,0,0" TextWrapping="Wrap" Text="Dinner Hours (Start/Stop)" VerticalAlignment="Top" Width="178" IsReadOnly="True"/>
+        <TextBox x:Name="txtStaticAlcoholHours" HorizontalAlignment="Left" Margin="21,148,0,0" TextWrapping="Wrap" Text="Alcohol Hours (Start/Stop)" VerticalAlignment="Top" Width="178" IsReadOnly="True"/>
+        <TextBox x:Name="txtReadonlyID" HorizontalAlignment="Left" Margin="228,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
+        <TextBox x:Name="txtUpdateName" HorizontalAlignment="Left" Margin="228,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+
+        <Grid x:Name="gridMenus" Height="263" Margin="0,171,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="800">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="27*"/>
+                <RowDefinition Height="25*"/>
+                <RowDefinition Height="211*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*"></ColumnDefinition>
+                <ColumnDefinition Width="20*"></ColumnDefinition>
+                <ColumnDefinition Width="20*"></ColumnDefinition>
+                <ColumnDefinition Width="20*"></ColumnDefinition>
+                <ColumnDefinition Width="20*"></ColumnDefinition>
+
+
+
+            </Grid.ColumnDefinitions>
+            <ComboBox x:Name="cmbHotDrink" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" Height="22" Grid.Row="1" SelectionChanged="cmbHotDrink_SelectionChanged"/>
+            <ComboBox x:Name="cmbBreakfast" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="120" Grid.Column="1" Height="22" Grid.Row="1" Margin="0,0,0,2" SelectionChanged="cmbBreakfast_SelectionChanged"/>
+            <ComboBox x:Name="cmbLunch" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120" Grid.Column="2" Height="22" Grid.Row="1" Margin="0,1,0,0" SelectionChanged="cmbLunch_SelectionChanged"/>
+            <ComboBox x:Name="cmbDinner" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" Grid.Column="3" Height="22" Grid.Row="1" SelectionChanged="cmbDinner_SelectionChanged"/>
+            <ComboBox x:Name="cmbAlcohol" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" Grid.Column="4" Height="22" Grid.Row="1" SelectionChanged="cmbAlcohol_SelectionChanged"/>
+            <Label Content="Hot Drinks" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Center" Height="26" Width="66"/>
+            <Label Content="Breakfast Menu" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Center" Grid.Column="1" Height="26" Width="92"/>
+            <Label Content="Lunch Menu" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Center" Grid.Column="2" Height="26" Width="75"/>
+            <Label Content="Dinner Menu" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Center" Grid.Column="3" Height="26" Width="79"/>
+            <Label Content="Alcohol Menu" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Grid.Column="4" Height="26" Width="84"/>
+            <ListView Grid.Row="2" d:ItemsSource="{d:SampleData ItemCount=5}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <ListView x:Name="lstHotDrinks" Grid.Row="2" d:ItemsSource="{d:SampleData ItemCount=5}" ScrollViewer.HorizontalScrollBarVisibility="Visible">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=name}"/>
+                        <GridViewColumn Header="Cost" DisplayMemberBinding="{Binding Path=cost}"/>
+
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <ListView x:Name="lstBreakfast" Grid.Column="1" Grid.Row="2" d:ItemsSource="{d:SampleData ItemCount=5}" ScrollViewer.HorizontalScrollBarVisibility="Visible">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=name}"/>
+                        <GridViewColumn Header="Cost" DisplayMemberBinding="{Binding Path=cost}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <ListView x:Name="lstLunch" Grid.Column="2" Grid.Row="2" d:ItemsSource="{d:SampleData ItemCount=5}" ScrollViewer.HorizontalScrollBarVisibility="Visible">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=name}"/>
+                        <GridViewColumn Header="Cost" DisplayMemberBinding="{Binding Path=cost}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <ListView x:Name="lstDinner" Grid.Column="3" Grid.Row="2" d:ItemsSource="{d:SampleData ItemCount=5}" ScrollViewer.HorizontalScrollBarVisibility="Visible">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=name}"/>
+                        <GridViewColumn Header="Cost" DisplayMemberBinding="{Binding Path=cost}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <ListView x:Name="lstAlcohol" Grid.Column="4" Grid.Row="2" d:ItemsSource="{d:SampleData ItemCount=5}" ScrollViewer.HorizontalScrollBarVisibility="Visible">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=name}"/>
+                        <GridViewColumn Header="Cost" DisplayMemberBinding="{Binding Path=cost}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+        </Grid>
+        <Button x:Name="btnSave" Content="Save" HorizontalAlignment="Left" Margin="548,77,0,0" VerticalAlignment="Top" Height="40" Width="100" Click="btnSave_Click" />
+        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="673,77,0,0" VerticalAlignment="Top" Height="40" Width="100" Click="btnCancel_Click" />
+        <ComboBox x:Name="cmbOpeningTimeHours" HorizontalAlignment="Left" Margin="229,56,0,0" VerticalAlignment="Top" Width="50" Height="18"/>
+        <ComboBox x:Name="cmbOpeningTimeMins" HorizontalAlignment="Left" Margin="298,56,0,0" VerticalAlignment="Top" Width="50" Height="18"/>
+        <ComboBox x:Name="cmbBreakfastStartHours" HorizontalAlignment="Left" Margin="228,79,0,0" VerticalAlignment="Top" Width="50" Height="18"/>
+        <ComboBox x:Name="cmbBreakfastStartMins" HorizontalAlignment="Left" Margin="298,79,0,0" VerticalAlignment="Top" Width="50" Height="18"/>
+        <ComboBox x:Name="cmbLunchStartHours" HorizontalAlignment="Left" Margin="228,104,0,0" VerticalAlignment="Top" Width="50" Height="18"/>
+        <ComboBox x:Name="cmbLunchStartMins" HorizontalAlignment="Left" Margin="298,104,0,0" VerticalAlignment="Top" Width="50" Height="18"/>
+        <ComboBox x:Name="cmbDinnerStartHours" HorizontalAlignment="Left" Margin="228,123,0,0" VerticalAlignment="Top" Width="50" Height="18"/>
+        <ComboBox x:Name="cmbDinnerStartMins" HorizontalAlignment="Left" Margin="298,123,0,0" VerticalAlignment="Top" Width="50" Height="18"/>
+        <ComboBox x:Name="cmbAlcoholStartHours" HorizontalAlignment="Left" Margin="228,148,0,0" VerticalAlignment="Top" Width="50" Height="18"/>
+        <ComboBox x:Name="cmbAlcoholStartMins" HorizontalAlignment="Left" Margin="298,148,0,0" VerticalAlignment="Top" Width="50" Height="18"/>
+        <ComboBox x:Name="cmbClosingTimeHours" HorizontalAlignment="Left" Margin="369,56,0,0" VerticalAlignment="Top" Width="50" Height="18"/>
+        <ComboBox x:Name="cmbClosingTimeMins" HorizontalAlignment="Left" Margin="439,56,0,0" VerticalAlignment="Top" Width="50" Height="18"/>
+        <ComboBox x:Name="cmbBreakfastStopHours" HorizontalAlignment="Left" Margin="369,79,0,0" VerticalAlignment="Top" Width="50" Height="18"/>
+        <ComboBox x:Name="cmbBreakfastStopMins" HorizontalAlignment="Left" Margin="439,79,0,0" VerticalAlignment="Top" Width="50" Height="18"/>
+        <ComboBox x:Name="cmbLunchStopHours" HorizontalAlignment="Left" Margin="369,104,0,0" VerticalAlignment="Top" Width="50" Height="18"/>
+        <ComboBox x:Name="cmbLunchStopMins" HorizontalAlignment="Left" Margin="439,104,0,0" VerticalAlignment="Top" Width="50" Height="18"/>
+        <ComboBox x:Name="cmbDinnerStopHours" HorizontalAlignment="Left" Margin="369,123,0,0" VerticalAlignment="Top" Width="50" Height="18"/>
+        <ComboBox x:Name="cmbDinnerStopMins" HorizontalAlignment="Left" Margin="439,123,0,0" VerticalAlignment="Top" Width="50" Height="18"/>
+        <ComboBox x:Name="cmbAlcoholStopHours" HorizontalAlignment="Left" Margin="369,148,0,0" VerticalAlignment="Top" Width="50" Height="18"/>
+        <ComboBox x:Name="cmbAlcoholStopMins" HorizontalAlignment="Left" Margin="439,148,0,0" VerticalAlignment="Top" Width="50" Height="18"/>
+    </Grid>
+</Window>
